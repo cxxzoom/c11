@@ -105,3 +105,66 @@ void inputName(void)
 }
 // 这里。如果你输入的时候，中间带有空格、制表符或换行符，则后面的不会被读取到
 ```
+
+
+## 输出重定向至文件
+exp: 有个编译好的文件，叫 p.exe  cmd下： p.exe > file_name.ext
+
+## 读取文件内容
+```c
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void)
+{
+    char file_name[] = "1.c";
+    char c ;
+    FILE *fp;
+    fp = fopen(file_name,"r");
+    if(fp == NULL){
+        // 读取失败
+        exit(1);
+    }
+
+    while((c = getc(fp)) != EOF){
+        // code here
+    }
+
+    return 0;
+}
+
+
+```
+
+
+# 递归
+代码：
+```c
+#include<stdio.h>
+int recursion(int);
+
+int main()
+{
+    recursion(1);
+    return 0;
+}
+
+int recursion(int n)
+{
+    
+    printf("Level %d: n location %p\n", n, &n);
+    if(n < 4){
+        recursion(n + 1);
+    }
+
+    printf("LEVEL %d: n location %p\n", n, &n); // #2
+
+    return 0;
+}
+
+
+```
+执行方式：  
+![递归](image-5.png)
+
+
